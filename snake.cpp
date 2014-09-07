@@ -148,21 +148,25 @@ void Game::scoreCheck(){
 bool Game::isExit(int c) { return c == 'q' || c == ''; }
 
 int Game::run(){
-  const char *title="Cursed Snake",
+  const char *title="Terminal Snake",
     *instruction="Arrow keys to move. [q] to quit.",
     *start="Press any key to begin",
-    *url="TBD",
+    *credits="By Sebin Thomas (http://sebin.in)",
     *scoreText="Score : ",
     *endText= "Game over";
 
   // init screen
   int cc;
   init_pair(4,COLOR_WHITE,COLOR_BLACK);
+  attron(COLOR_PAIR(4));
   display->erase();
+  attron(A_BOLD);
   display->center(-2, title);
+  attroff(A_BOLD);
   display->center(0, instruction);
-  display->center(1,start);
-  display->center(2,url);
+  display->center(2,start);
+  display->center(4,credits);
+  attroff(COLOR_PAIR(4));
   if (isExit(display->blockGetch())) return -1;
 
   //game loop
@@ -204,7 +208,9 @@ int Game::run(){
   }
   // End Screen
   display->erase();
-  display->center(0,endText);
+  attron(A_BOLD);
+  display->center(-1,endText);
+  attroff(A_BOLD);
   display->center(1,"%s %d",scoreText,score);
   display->center(3,"Press any key to quit");
   display->blockGetch();
