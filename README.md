@@ -2,7 +2,7 @@
 
 A snake game playable on your terminal.
 
-[](http://i.imgur.com/gxWcTqq.jpg)
+![](http://i.imgur.com/gxWcTqq.jpg)
 
 ## Installation
 
