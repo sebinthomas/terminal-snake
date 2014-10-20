@@ -176,6 +176,7 @@ int Game::run(){
       return -1;
       }
     if(cc !=ERR){
+      while(getch()!=ERR); // clear getch buffer
       switch(cc){
       case KEY_UP:
 	snake->move(0,-1);
